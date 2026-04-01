@@ -21,7 +21,7 @@ public class FlightController : MonoBehaviour
         if (rb != null)
         {
             rb.freezeRotation = true;
-            // Zıplamayı önlemek için fizik yumuşatma ekledik
+           
             rb.interpolation = RigidbodyInterpolation.Interpolate;
         }
     }
