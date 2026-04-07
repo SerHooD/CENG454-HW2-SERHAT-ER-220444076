@@ -4,10 +4,10 @@ using UnityEngine;
 // Author: Serhat Er | Student ID: [220444076]
 public class FlightController : MonoBehaviour
 {
-    [SerializeField] private float pitchSpeed = 45f; // degrees/second
-    [SerializeField] private float yawSpeed = 45f;   // degrees/second
-    [SerializeField] private float rollSpeed = 45f;  // degrees/second
-    [SerializeField] private float thrustSpeed = 45f; // units/second 
+    [SerializeField] private float pitchSpeed = 45f; 
+    [SerializeField] private float yawSpeed = 45f;   
+    [SerializeField] private float rollSpeed = 45f;  
+    [SerializeField] private float thrustSpeed = 45f; 
 
     // TODO (Task 3-A): Declare a private Rigidbody field named 'rb'
     private Rigidbody rb;
@@ -17,7 +17,7 @@ public class FlightController : MonoBehaviour
         // TODO (Task 3-B): Cache GetComponent() into 'rb'.
         rb = GetComponent<Rigidbody>();
 
-        // Then set rb.freezeRotation = true.
+        
         if (rb != null)
         {
             rb.freezeRotation = true;
@@ -26,7 +26,7 @@ public class FlightController : MonoBehaviour
         }
     }
 
-    void Update() // or FixedUpdate()
+    void Update() 
     {
         HandleRotation();
         HandleThrust();
@@ -35,15 +35,15 @@ public class FlightController : MonoBehaviour
     private void HandleRotation()
     {
         // TODO (Task 3-C):
-        // Pitch Ok Tuşları Yukarı/Aşağı
+        
         float pitchInput = Input.GetAxis("Vertical");
         transform.Rotate(Vector3.right * pitchInput * pitchSpeed * Time.deltaTime);
 
-        // Yaw Ok Tuşları Sağ/Sol
+        
         float yawInput = Input.GetAxis("Horizontal");
         transform.Rotate(Vector3.up * yawInput * yawSpeed * Time.deltaTime);
 
-        // Roll Q ve E 
+        
         float rollInput = 0f;
         if (Input.GetKey(KeyCode.Q)) rollInput = 1f;
         else if (Input.GetKey(KeyCode.E)) rollInput = -1f;

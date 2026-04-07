@@ -9,10 +9,19 @@ public class FlightExamManager : MonoBehaviour
     private bool hasTakenOff = false;
     private bool threatCleared = false;
     private bool missionComplete = false;
+    private bool isCrashed = false; 
+
+    private AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = Resources.Load<AudioClip>("Sounds/SuccessSound");
+    }
 
     public void EnterDangerZone()
     {
-        // TODO: update the mission state and HUD
+        isCrashed = false; 
         threatCleared = false; 
 
         if (statusText != null)
@@ -20,27 +29,34 @@ public class FlightExamManager : MonoBehaviour
             statusText.text = "Entered a Dangerous Zone!";
             statusText.color = Color.red;
         }
-
-        if (missionText != null)
-        {
-            missionText.text = "Threat Phase Active!";
-        }
     }
 
     public void ExitDangerZone()
     {
-        // TODO: mark the threat as cleared and refresh the HUD
+        if (isCrashed) return; 
+
         threatCleared = true; 
+
+        if (audioSource != null)
+            audioSource.Play();
 
         if (statusText != null)
         {
             statusText.text = "Safe Zone - Threat Cleared";
             statusText.color = Color.green;
         }
+    }
 
-        if (missionText != null)
+    public void OnMissileHit()
+    {
+        isCrashed = true; 
+        hasTakenOff = false;
+        threatCleared = false;
+
+        if (statusText != null)
         {
-            missionText.text = "Mission: Return to Base";
+            statusText.text = "CRASHED! Return to runway.";
+            statusText.color = Color.red;
         }
     }
 }
