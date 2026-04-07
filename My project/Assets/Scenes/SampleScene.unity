@@ -153,9 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47b948544298c33428814618ac9957e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlightController
-  pitchSpeed: 45
-  yawSpeed: 45
-  rollSpeed: 45
+  pitchSpeed: 50
+  yawSpeed: 50
+  rollSpeed: 50
   thrustSpeed: 150
 --- !u!65 &31322185
 BoxCollider:
@@ -1128,8 +1128,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1167,7 +1167,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -369.41815, w: -62.34143}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2644,6 +2644,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1366644479}
   - component: {fileID: 1366644478}
+  - component: {fileID: 1366644480}
   m_Layer: 0
   m_Name: LandingArea
   m_TagString: Untagged
@@ -2687,6 +2688,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0.349, z: 0}
+--- !u!114 &1366644480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366644477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b098705960ce3ce4483a4bf67398ab64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LandingController
+  examManager: {fileID: 329240310}
+  isTakeoffArea: 0
 --- !u!1 &1370480474
 GameObject:
   m_ObjectHideFlags: 0
@@ -2697,6 +2712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1370480476}
   - component: {fileID: 1370480475}
+  - component: {fileID: 1370480477}
   m_Layer: 0
   m_Name: 'TakeOffArea '
   m_TagString: TakeOffArea
@@ -2740,6 +2756,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0.349, z: 0}
+--- !u!114 &1370480477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370480474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b098705960ce3ce4483a4bf67398ab64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LandingController
+  examManager: {fileID: 329240310}
+  isTakeoffArea: 1
 --- !u!1 &1463862011
 GameObject:
   m_ObjectHideFlags: 0

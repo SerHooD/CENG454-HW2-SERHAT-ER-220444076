@@ -5,11 +5,11 @@ public class FlightExamManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text statusText;
     [SerializeField] private TMP_Text missionText;
-    
+
     private bool hasTakenOff = false;
     private bool threatCleared = false;
     private bool missionComplete = false;
-    private bool isCrashed = false; 
+    private bool isCrashed = false;
 
     private AudioSource audioSource;
 
@@ -21,21 +21,21 @@ public class FlightExamManager : MonoBehaviour
 
     public void EnterDangerZone()
     {
-        isCrashed = false; 
-        threatCleared = false; 
+        isCrashed = false;
+        threatCleared = false;
 
         if (statusText != null)
         {
-            statusText.text = "Entered a Dangerous Zone!";
+            statusText.text = "Entered a Dangerous Zone!\nMissile will be launched in 5 seconds!";
             statusText.color = Color.red;
         }
     }
 
     public void ExitDangerZone()
     {
-        if (isCrashed) return; 
+        if (isCrashed) return;
 
-        threatCleared = true; 
+        threatCleared = true;
 
         if (audioSource != null)
             audioSource.Play();
@@ -49,7 +49,7 @@ public class FlightExamManager : MonoBehaviour
 
     public void OnMissileHit()
     {
-        isCrashed = true; 
+        isCrashed = true;
         hasTakenOff = false;
         threatCleared = false;
 
@@ -57,6 +57,40 @@ public class FlightExamManager : MonoBehaviour
         {
             statusText.text = "CRASHED! Return to runway.";
             statusText.color = Color.red;
+        }
+    }
+    public void OnTakeoff()
+    {
+        hasTakenOff = true;
+
+        if (statusText != null)
+        {
+            statusText.text = "Fly through the Danger Zone and land safely!";
+            statusText.color = Color.white;
+        }
+    }
+
+    public void OnLanding()
+    {
+        if (!hasTakenOff || !threatCleared)
+        {
+            if (statusText != null)
+            {
+                statusText.text = "Complete the mission first!";
+                statusText.color = Color.yellow;
+            }
+            return;
+        }
+
+        missionComplete = true;
+
+        if (audioSource != null)
+            audioSource.Play();
+
+        if (statusText != null)
+        {
+            statusText.text = "Mission Complete!";
+            statusText.color = Color.green;
         }
     }
 }
